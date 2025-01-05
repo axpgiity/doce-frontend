@@ -1,0 +1,89 @@
+---
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Documentation Viewer" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/png" href="/src/assets/nobglogo.png" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  @tailwind base;
+  @tailwind components;
+  @tailwind utilities;
+
+  :root {
+    --background-gradient: linear-gradient(to bottom, #1a1b41, #000428);
+    color-scheme: dark;
+  }
+
+  html {
+    font-family: system-ui, sans-serif;
+    background: var(--background-gradient);
+    color: #c9d1d9;
+    min-height: 100%;
+  }
+
+  body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  .prose {
+    max-width: none;
+  }
+
+  .prose h1,
+  .prose h2,
+  .prose h3,
+  .prose h4,
+  .prose h5,
+  .prose h6 {
+    color: #c9d1d9;
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+  }
+
+  .prose p {
+    margin: 1em 0;
+  }
+
+  .prose code {
+    background: #1f2937;
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+    font-size: 0.9em;
+  }
+
+  .prose pre {
+    background: #1f2937;
+    padding: 1em;
+    border-radius: 6px;
+    overflow-x: auto;
+  }
+
+  /* Optional: Styling for links */
+  a {
+    color: #58a6ff;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+</style>

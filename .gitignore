@@ -1,0 +1,13 @@
+# Example .gitignore content
+
+# Ignore node_modules directory
+node_modules/
+
+# Ignore build output
+dist/
+
+# Ignore environment variables file
+.env
+
+# Ignore log files
+*.log
