@@ -12,7 +12,7 @@ interface CustomFile {
 interface AppContainerProps {
   files: CustomFile[];
   error: string | null;
-  showContent: boolean;
+  showContent: boolean | false;
   rootPath: string;
 }
 
@@ -56,6 +56,7 @@ export default function AppContainer({
     );
   }
 
+  // If Files Not Found
   if (!files || files.length === 0) {
     return (
       <div className="flex items-center justify-center h-[400px] backdrop-blur-lg bg-black/30 rounded-lg border border-white/10">
@@ -65,7 +66,7 @@ export default function AppContainer({
             No Documentation Available
           </h3>
           <p className="text-gray-400">
-            No files were found to generate documentation.
+            Check your directory if Java Files are Available.
           </p>
         </div>
       </div>

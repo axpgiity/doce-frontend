@@ -18,6 +18,7 @@ interface InputFormProps {
   onInputTypeChange: (type: "githubLink" | "localPath") => void;
   onInputChange: (input: string) => void;
   setLoading: (loading: boolean) => void;
+  setGenDocPressed: (genDocPressed: boolean) => void; // to check if App Container should be rendered or not
   setResponse: (response: ApiResponse | null) => void;
   setError: (error: string | null) => void;
   setFiles: (
@@ -36,6 +37,7 @@ export default function InputForm({
   setResponse,
   setError,
   setFiles,
+  setGenDocPressed,
 }: InputFormProps) {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -43,6 +45,7 @@ export default function InputForm({
     setError(null);
     setResponse(null); // Reset the response state
     setLoading(true); // Set loading state to true
+    setGenDocPressed(true); // Setting Button Pressed as true, hence display app container
 
     const url = "http://localhost:8080/api/upload";
     const formData = {

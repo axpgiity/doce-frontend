@@ -22,6 +22,7 @@ export default function LandingPage() {
   );
   const [input, setInput] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
+  const [genDocPressed, setGenDocPressed] = useState<boolean>(false);
   const [response, setResponse] = useState<ApiResponse | null>(null);
   const [error, setError] = useState<string | null>(null);
   const { files, setFiles } = useFileStore(); // Use Zustand store for files
@@ -47,22 +48,25 @@ export default function LandingPage() {
             onInputTypeChange={setInputType}
             onInputChange={setInput}
             setLoading={setLoading}
+            setGenDocPressed={setGenDocPressed} // Pass the handler to InputForm
             setResponse={setResponse}
             setError={setError}
             setFiles={setFiles}
           />
         </div>
 
-        {(loading || error || files.length > 0) && (
-          <div className="backdrop-blur-xl bg-white/10 rounded-xl shadow-2xl border border-white/20 p-6 mb-16">
-            <AppContainer
-              files={files}
-              error={error}
-              showContent={true}
-              rootPath={response?.repoPath || ""}
-            />
-          </div>
-        )}
+        {genDocPressed &&
+          !loading &&
+          (loading || error || files.length > 0) && (
+            <div className="backdrop-blur-xl bg-white/5 rounded-xl shadow-2xl border border-white/20 p-6 mb-16">
+              <AppContainer
+                files={files}
+                error={error}
+                showContent={true}
+                rootPath={response?.repoPath || ""}
+              />
+            </div>
+          )}
       </main>
 
       <footer className="footer text-center py-6 text-gray-400 border-t border-white/10">
