@@ -8,7 +8,7 @@ Welcome to the Doce Functional UI project! This project is part of the CoDoc App
 - [Installation](#installation)
 - [Usage](#usage)
 - [Non-Functional Components](#non-functional-components)
-- [Ai-Bot](#AI Assistance)
+- [Ai-Bot](#AI-Assistance)
 
 ## Introduction
 
